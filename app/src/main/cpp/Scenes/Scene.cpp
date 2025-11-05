@@ -2,7 +2,7 @@
 // Created by Admin on 02.11.2025.
 //
 #include "Scene.h"
-#include "../Game.h"
+#include "../Game/Game.h"
 
 Font Scene::GetFont(Game* game) {
     return game->GetFont();

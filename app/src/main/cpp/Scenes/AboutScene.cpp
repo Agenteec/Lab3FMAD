@@ -3,7 +3,7 @@
 //
 
 #include "AboutScene.h"
-#include "../Game.h"
+#include "../Game/Game.h"
 
 void AboutScene::Update(Game* game) {
     // Обновление логики экрана "Об игре"
