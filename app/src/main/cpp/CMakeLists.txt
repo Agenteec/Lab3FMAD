@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 4.1.2)
 
-project("VoidAssault")
+project("main")
 
 set(CHIPMUNK_BUILD_DEMOS OFF CACHE BOOL "" FORCE)
 set(CHIPMUNK_BUILD_SHARED OFF CACHE BOOL "" FORCE)
@@ -43,7 +43,6 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/Network
         ${CMAKE_CURRENT_SOURCE_DIR}/Components
         ${CMAKE_CURRENT_SOURCE_DIR}/Utils
-        #${CMAKE_CURRENT_SOURCE_DIR}/chipmunk/include
         ${CMAKE_CURRENT_SOURCE_DIR}/enet/include
 )
 set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE) # don't build the supplied examples
@@ -51,7 +50,7 @@ string(REGEX MATCH "android-([0-9]+)" _ ${ANDROID_PLATFORM} FORCE)
 set(ANDROID_API_VERSION ${CMAKE_MATCH_1} CACHE STRING "" FORCE)
 set(ANDROID_ARCH ${CMAKE_ANDROID_ARCH} CACHE STRING "" FORCE)
 set(PLATFORM "Android" CACHE STRING "" FORCE)
-
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -u ANativeActivity_onCreate")
 add_subdirectory(raylib)
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
         Scenes
